@@ -1,22 +1,38 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
+import { FcGoogle } from "react-icons/fc";
 
 const Register = () => {
   const { register,formState:{errors}, handleSubmit } = useForm();
 
-  const {createNewUser} = useContext(AuthContext);
+  const {createNewUser, updateUser} = useContext(AuthContext);
+
+  const [signUpError, setSignUpError] = useState('')
 
   const handleRegister = (data)=>{
     console.log(data);
+    setSignUpError('');
     createNewUser(data.email, data.password)
     .then(result =>{
       const user = result.user;
       console.log(user);
+      toast.success('User register successfully.')
+      const userInfo = {
+        displayName: data.name
+      }
+      updateUser(userInfo)
+      .then(()=>{})
+      .catch(err=>console.log(err));
 
     })
-    .catch(err=>console.log(err));
+    .catch(err=>{
+      console.log(err);
+      setSignUpError(err.message)
+    
+    });
 
   }
   return (
@@ -29,7 +45,7 @@ const Register = () => {
       
       
       <div className="w-96 p-7">
-        <h1>Sign In With</h1>
+        <div className='flex flex-row'><h1>Sign In With  <FcGoogle className='text-2xl'></FcGoogle></h1></div>
         <div className="divider">OR</div>
         <h2>Login</h2>
       <form onSubmit={handleSubmit(handleRegister)}>
@@ -81,7 +97,8 @@ const Register = () => {
        
 
         <p>New to Doctors Portal <Link className="text-red-400 font-semibold" to="/login">Please Login</Link></p>
-        <input className="btn btn-accent w-full" value='login' type="submit" />
+        <input className="btn btn-accent w-full" value='sign up' type="submit" />
+        <div>{signUpError && <p className="text-red-500">{signUpError}</p>}</div>
       </form>
       </div>
     </div>

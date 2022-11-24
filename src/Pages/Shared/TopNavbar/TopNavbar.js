@@ -1,15 +1,43 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../contexts/AuthProvider";
+import { FcGoogle } from "react-icons/fc";
+
 
 const TopNavbar = () => {
+  
+  const {user, logOut} = useContext(AuthContext);
+  const navigate = useNavigate();
+  console.log(user);
+  const handleLogOut = () =>{
+    logOut()
+    .then(()=>{
+      navigate('/login')
+    })
+    .catch(err=> console.log(err));
+  }
+
+
   const menuOptions =<React.Fragment>
      <li>
               <Link to='/'>Home</Link>
             </li>
-          
-            <li>
-              <Link to='/login'>Login</Link>
+     <li>
+              <Link to='/blogs'>Blogs</Link>
             </li>
+            <li>
+        <Link to='/dashboard'>Dashboard</Link>
+      </li>
+          
+          
+            {user?.email ? <>
+            
+        <li><button onClick={handleLogOut}>SignOut</button></li> 
+       
+      
+      </>:
+      <li><Link to="/login">Login</Link></li>
+      }
   </React.Fragment>
   return (
     <div className="navbar bg-base-100">
@@ -49,6 +77,8 @@ const TopNavbar = () => {
       <div className="navbar-end">
         <Link className="btn">Get started</Link>
       </div>
+
+      {/* <label htmlFor="dashboard-drawer" className="btn btn-ghost lg:hidden"><FcGoogle></FcGoogle></label> */}
     </div>
   );
 };
