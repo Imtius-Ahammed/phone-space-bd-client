@@ -46,7 +46,7 @@ const BuyNowModal = ({phones,setPhones}) => {
               name="title"
               type="text"
               disabled
-              defaultValue={title}
+              value={title}
               placeholder="Your Name"
               className="input w-full "
             />
@@ -70,7 +70,7 @@ const BuyNowModal = ({phones,setPhones}) => {
               name="price"
               type="text"
               disabled
-              defaultValue={resale_price}
+              value={resale_price}
               placeholder="Email Address"
               className="input w-full "
             />

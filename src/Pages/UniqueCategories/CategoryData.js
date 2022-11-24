@@ -2,13 +2,15 @@ import React from 'react';
 
 
 const CategoryData = ({phonedata, setPhones}) => {
-  console.log(phonedata);
+  
   const{img,title,_id,original_price,resale_price,used_time,location,seller} = phonedata;
   console.log(phonedata)
  
 
   return (
+    
     <div  className="card bg-base-100 shadow-xl">
+      
     <figure>
       <img className='lg:h-[300px]' src={img} alt="Shoes" />
     </figure>
