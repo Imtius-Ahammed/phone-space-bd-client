@@ -1,16 +1,33 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { FcGoogle } from "react-icons/fc";
+import {  GoogleAuthProvider } from 'firebase/auth';
 
 const Register = () => {
   const { register,formState:{errors}, handleSubmit } = useForm();
 
-  const {createNewUser, updateUser} = useContext(AuthContext);
+  const {createNewUser,providerLogin, updateUser} = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  const [signUpError, setSignUpError] = useState('')
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
+  const [signUpError, setSignUpError] = useState('');
+  const googleProvider = new GoogleAuthProvider();
+ 
+
+  const handleGoogleLogin = () => {
+    providerLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+         navigate(from, { replace: true });
+      })
+      .catch((error) => console.error(error));
+  };
 
   const handleRegister = (data)=>{
     console.log(data);
@@ -44,10 +61,10 @@ const Register = () => {
       </div>
       
       
-      <div className="w-96 p-7">
-        <div className='flex flex-row'><h1>Sign In With  <FcGoogle className='text-2xl'></FcGoogle></h1></div>
+      <div className="w-96 p-8">
+        <div><h1 className='flex gap-2 justify-center items-center text-2xl font-semibold '>Sign In With  <FcGoogle onClick={handleGoogleLogin} className='cursor-pointer text-3xl '></FcGoogle></h1></div>
         <div className="divider">OR</div>
-        <h2>Login</h2>
+        <h2 className='text-2xl font-bold text-center'>Login</h2>
       <form onSubmit={handleSubmit(handleRegister)}>
         <div className="form-control w-full max-w-xs">
           <label className="label">
@@ -75,7 +92,7 @@ const Register = () => {
           />
           {errors.email && <p className="text-red-500" role="alert">{errors.email?.message}</p>}
         </div>
-        <div className="form-control w-full max-w-xs">
+        <div className="form-control w-full max-w-xs mb-2">
           <label className="label">
             <span className="label-text"> your Password?</span>
           </label>
@@ -96,8 +113,8 @@ const Register = () => {
         </div>
        
 
-        <p>New to Doctors Portal <Link className="text-red-400 font-semibold" to="/login">Please Login</Link></p>
-        <input className="btn btn-accent w-full" value='sign up' type="submit" />
+        <p className='mb-2'><small>New to PhoneSpaceBD?</small> <Link className="text-red-400 font-semibold " to="/login">Please Login</Link></p>
+        <input className="btn btn-accent  w-full" value='sign up' type="submit" />
         <div>{signUpError && <p className="text-red-500">{signUpError}</p>}</div>
       </form>
       </div>

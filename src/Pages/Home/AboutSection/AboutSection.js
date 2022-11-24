@@ -3,10 +3,10 @@ import used2 from "../../../assets/used2.png";
 
 const AboutSection = () => {
   return (
-    <section className="mt-32">
-      <div className="hero   bg-base-200">
+    <section className="mt-32 m-3 ">
+      <div className="hero   bg-base-200 ">
         <div className="hero-content  flex-col lg:flex-row-reverse">
-          <img src={used2} className=" -mt-32 lg:w-1/2 " alt="" />
+          <img src={used2} className=" -mt-32 lg:w-1/2 lg:h-[500px] " alt="" />
           <div>
             <h1 className="lg:text-5xl text-3xl font-bold">Welcome to PhoneSpaceBD</h1>
             <p className="py-6">
