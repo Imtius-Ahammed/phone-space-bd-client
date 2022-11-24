@@ -53,7 +53,7 @@ const Login = () => {
         </div>
        
 
-        <p>New to Doctors Portal <Link className="text-red-400 font-semibold" to="/signup">Create new Account</Link></p>
+        <p>New to Doctors Portal <Link className="text-red-400 font-semibold" to="/register">Create new Account</Link></p>
         <input className="btn btn-accent w-full" value='login' type="submit" />
       </form>
       </div>
