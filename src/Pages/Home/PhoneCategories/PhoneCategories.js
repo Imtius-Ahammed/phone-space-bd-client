@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import BuyNowModal from '../../BuyNowModal/BuyNowModal';
 
 
 const PhoneCategories = () => {
   const [categories,setCategories]  =useState([])
-  console.log(categories)
+  console.log(categories);
+ 
 
   useEffect(()=>{
 fetch('http://localhost:5000/phoneCategories')
@@ -28,6 +30,7 @@ fetch('http://localhost:5000/phoneCategories')
         }
 
       </div>
+    
       
     </section>
   );

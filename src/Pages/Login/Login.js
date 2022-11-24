@@ -1,18 +1,34 @@
 
+import { GoogleAuthProvider } from "firebase/auth";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Login = () => {
   const { register,formState:{errors}, handleSubmit } = useForm();
-  const{signIn} = useContext(AuthContext);
+  const{signIn,providerLogin} = useContext(AuthContext);
   const [loginError,setLoginError] = useState('');
   const location = useLocation();
   const navigate = useNavigate();
 
   const from = location.state?.from?.pathname || '/';
+
+ 
+  const googleProvider = new GoogleAuthProvider();
+ 
+
+  const handleGoogleLogin = () => {
+    providerLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+         navigate(from, { replace: true });
+      })
+      .catch((error) => console.error(error));
+  };
  
   const handleLogin = (data)=>{
     console.log(data);
@@ -43,9 +59,10 @@ const Login = () => {
       
       
       <div className="w-96 p-7">
-        <h1>Sign In With</h1>
+        
+      <div><h1 className='flex gap-2 justify-center items-center text-2xl font-semibold '>Sign In With  <FcGoogle onClick={handleGoogleLogin} className='cursor-pointer text-3xl '></FcGoogle></h1></div>
         <div className="divider">OR</div>
-        <h2>Login</h2>
+        <h2 className="text-2xl font-bold text-center">Login</h2>
       <form onSubmit={handleSubmit(handleLogin)}>
         <div className="form-control w-full max-w-xs">
           <label className="label">

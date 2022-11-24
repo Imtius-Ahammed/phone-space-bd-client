@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
-import { FcGoogle } from "react-icons/fc";
+import { FaUser, IconName } from "react-icons/fa";
 
 
 const TopNavbar = () => {
@@ -75,9 +75,24 @@ const TopNavbar = () => {
         {menuOptions}
         </ul>
       </div>
-      <div className="navbar-end">
-        <Link className="btn">Get started</Link>
-      </div>
+      <div
+              className="tooltip tooltip-bottom "
+              data-tip={user?.displayName}
+            >
+              <button className="btn ">
+               
+                {user?.photoURL ? (
+                  <img
+                    style={{ height: "35px" }}
+                    className="rounded-full"
+                    src={user?.photoURL}
+                    alt=""
+                  />
+                ) : (
+                  <FaUser></FaUser>
+                )}
+              </button>
+            </div>
 
       {/* <label htmlFor="dashboard-drawer" className="btn btn-ghost lg:hidden"><FcGoogle></FcGoogle></label> */}
     </div>
