@@ -25,12 +25,13 @@ const TopNavbar = () => {
      <li>
               <Link to='/blogs'>Blogs</Link>
             </li>
-            <li>
-        <Link to='/dashboard'>Dashboard</Link>
-      </li>
+       
           
           
             {user?.email ? <>
+              <li>
+        <Link to='/dashboard'>Dashboard</Link>
+      </li>
             
         <li><button onClick={handleLogOut}>SignOut</button></li> 
        

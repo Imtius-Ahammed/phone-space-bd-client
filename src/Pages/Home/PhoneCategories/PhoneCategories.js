@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 const PhoneCategories = () => {
@@ -20,7 +21,7 @@ fetch('http://localhost:5000/phoneCategories')
             <h2 className="card-title">{category.title}</h2>
             <p>{category.info}</p>
             <div className="card-actions justify-end">
-              <button className="btn btn-primary">Buy Now</button>
+              <Link to={`/category/${category.category_id}`}><button  className="btn btn-primary">Buy Now</button></Link>
             </div>
           </div>
         </div> )

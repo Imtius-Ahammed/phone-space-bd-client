@@ -1,24 +1,70 @@
 [
   {
- 
-  "category_id": "01",
-  "title": "Feature Phones",
-  "info":"Best Match Newest Oldest Price high to low. Price low to high. Most Reviewed. Symphony L43 2.4 Inch Feature Phone - 1700mAh - Light Blue.",
-  "img": "https://www.kaiostech.com/wp-content/uploads/01-copy-1.jpg"
+    "seller": "Ridoy Khan",
+    "time": "10.50PM",
+    "category_id": "01",
+    "title": "Nokia 6300 4G",
+    "resale_price": "240",
+    "original_price": "340",
+    "location": "Uttara, Dhaka",
+    "used_time": "5 months",
+    "img": "https://nokiamob.net/wp-content/uploads/2020/11/Nokia_8000_or_6300_4G_1.jpg"
   },
   {
- 
-  "category_id": "02",
-  "title": "Smartphones",
-  "info":"Buy apple iPhone, samsung, Huawei, Xiaomi, Realme, Oneplus, Vivo, oppo smartphone with discounted price with Exciting Gift, warranty & Up to 36 Months EMI.",
-  "img": "https://www.wallpaperup.com/uploads/wallpapers/2018/07/06/1272283/a61fdf234018796ad79fc429d52fa2f9.jpg"
+    "seller": "Md. Imtius Ahammed",
+    "time": "9.19PM",
+    "category_id": "01",
+    "title": "Nokia 106 Dual",
+    "resale_price": "140",
+    "original_price": "240",
+    "location": "Uttara 10, Dhaka",
+    "used_time": "4 months",
+    "img": "https://igadget.com.bd/wp-content/uploads/2020/12/nokia-106-2018-0.jpg"
   },
   {
-  
-  "category_id": "03",
-  "title": "Tablet",
-  "info":"Buy Tablet at the best price in Bangladesh. Choose your desired iPad, Lenovo, Microsoft, Wacom tab from Star Tech shop. Order Online & get delivery in BD.",
-  "img": "https://cdn.arstechnica.net/wp-content/uploads/2022/02/2-800x451.jpg"
-  }
+    "seller": "Robin Khan",
+    "time": "12.20PM",
 
-  ]
+    "category_id": "02",
+    "title": "Redmi K50 Gaming",
+    "resale_price": "450",
+    "original_price": "640",
+    "location": "Motijhil , Dhaka",
+    "used_time": "2 months",
+    "img": "https://xiaomiplanet.sk/wp-content/uploads/2022/02/redmi-k50-gaming-edition-objednavka-cover.jpg"
+  },
+  {
+    "seller": "Alif Khan",
+    "time": "10.20PM",
+    "category_id": "02",
+    "title": "POCO F3",
+    "resale_price": "350",
+    "original_price": "540",
+    "location": "Gulshan, Dhaka",
+    "used_time": "1 months",
+    "img": "https://fdn.gsmarena.com/imgroot/reviews/21/poco-f3/lifestyle/-1200w5/gsmarena_009.jpg"
+  },
+  {
+    "seller": "MD. Rahi",
+    "time": "10.34AM",
+    "category_id": "03",
+    "title": "iPad Pro 12.9 256GB",
+    "resale_price": "750",
+    "original_price": "1140",
+    "location": "Gazipur, Dhaka",
+    "used_time": "1 year",
+    "img": "https://media.karousell.com/media/photos/products/2022/10/3/ipad_pro_129_256gb_wifi_m1__us_1664771184_e62ee98b_progressive.jpg"
+  },
+  {
+    "seller": "Mominul Islam",
+    "time": "9.29AM",
+
+    "category_id": "03",
+    "title": "Samsung Galaxy Tab A7 Lite",
+    "resale_price": "650",
+    "original_price": "1040",
+    "location": "Badda, Dhaka",
+    "used_time": "1.2 year",
+    "img": "https://i0.wp.com/mynexttablet.com/wp-content/uploads/2021/07/samsung-galaxy-tab-a7-lite-built.jpg?resize=740%2C463&ssl=1"
+  }
+]
