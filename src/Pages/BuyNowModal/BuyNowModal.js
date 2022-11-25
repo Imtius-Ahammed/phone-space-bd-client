@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const BuyNowModal = ({phones,setPhones}) => {
@@ -13,17 +14,42 @@ const BuyNowModal = ({phones,setPhones}) => {
     const price = form.price.value;
     const email = form.email.value;
     const phone = form.phone.value;
-  };
-    // const booking = {
+    const datetime = form.datetime.value;
+  
+    const orderBooking = {
      
      
-    //   title,
-    //   name,
+      title,
+      name,
       
-    //   email,
-    //   phone,
-    //   price,
-    // };
+      email,
+      phone,
+      price,
+      datetime
+      
+    };
+    console.log(orderBooking)
+    
+    fetch("http://localhost:5000/orders", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(orderBooking),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          setPhones(null)
+          toast.success("Order Confirmed");
+          // refetch();
+        } else {
+          toast.error(data.message);
+        }
+      });
+  };
+  
   return (
     <>
       <input type="checkbox" id="buy-modal" className="modal-toggle" />
@@ -42,20 +68,13 @@ const BuyNowModal = ({phones,setPhones}) => {
           >
          
            
-            <input
-              name="title"
-              type="text"
-              disabled
-              value={title}
-              placeholder="Your Name"
-              className="input w-full "
-            />
+          
             <input
               name="name"
               type="text"
               disabled
               defaultValue={user?.displayName}
-              placeholder="Email Address"
+              placeholder="Your Name"
               className="input w-full "
             />
             <input
@@ -66,26 +85,45 @@ const BuyNowModal = ({phones,setPhones}) => {
               placeholder="Email Address"
               className="input w-full "
             />
+              <input
+              name="title"
+              type="text"
+              disabled
+              value={title}
+              placeholder="Product Name"
+              className="input w-full "
+            />
             <input
               name="price"
               type="text"
               disabled
+              
               value={resale_price}
-              placeholder="Email Address"
+              placeholder="Price"
               className="input w-full "
             />
             <input
+              required
               name="phone"
               type="text"
               placeholder="Phone Number"
               className="input w-full "
             />
+            <input
+              required
+              name="address"
+              type="address"
+              placeholder="Meeting Address"
+              className="input w-full "
+            />
+             <input required className="input w-full " name='datetime' type="datetime-local"/>
 
             <input
               className="btn btn-accent w-full "
               type="submit"
               value="Submit"
             />
+           
           </form>
         </div>
       </div>

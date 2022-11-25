@@ -4,7 +4,7 @@ import React from 'react';
 const CategoryData = ({phonedata, setPhones}) => {
   
   const{img,title,_id,original_price,resale_price,used_time,location,seller} = phonedata;
-  console.log(phonedata)
+  
  
 
   return (
@@ -22,8 +22,8 @@ const CategoryData = ({phonedata, setPhones}) => {
       </h2>
       <h1 className='text-xl'> Seller: <strong>{seller}</strong></h1>
       <p>Product Id: <strong>{_id}</strong></p>
-      <p>Original Price:<span className='font-medium text-red-400'> $ {original_price}</span></p>
-      <p>Resale Price: <span className='font-medium text-red-400'> $ {resale_price}</span></p>
+      <p>Original Price:<span className='font-medium text-red-400'> {original_price}</span></p>
+      <p>Resale Price: <span className='font-medium text-red-400'>{resale_price}</span></p>
       <p>Used For:  <span className='font-medium'>{used_time}</span></p>
       <p>Address:  <span className='font-medium'>{location}</span></p>
       <div className="card-actions justify-end">

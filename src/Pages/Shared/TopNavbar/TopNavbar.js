@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
-import { FaUser, IconName } from "react-icons/fa";
+import { FaUser, FaDatabase } from "react-icons/fa";
 
 
 const TopNavbar = () => {
@@ -61,7 +61,7 @@ const TopNavbar = () => {
             </svg>
           </label>
           <ul
-            tabIndex={0}
+            tabIndex={1}
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             {menuOptions}
@@ -95,6 +95,9 @@ const TopNavbar = () => {
             </div>
 
       {/* <label htmlFor="dashboard-drawer" className="btn btn-ghost lg:hidden"><FcGoogle></FcGoogle></label> */}
+      <label htmlFor="dashboard-drawer"  tabIndex={2} className="btn btn-ghost lg:hidden">
+            <FaDatabase className="text-2xl"></FaDatabase>
+          </label>
     </div>
   );
 };
