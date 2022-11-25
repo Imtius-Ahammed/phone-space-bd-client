@@ -41,7 +41,7 @@ const TopNavbar = () => {
       }
   </React.Fragment>
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-300 flex justify-between ">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -62,16 +62,16 @@ const TopNavbar = () => {
           </label>
           <ul
             tabIndex={1}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow-lg bg-base-100 rounded-box w-52"
           >
-            {menuOptions}
+           <li> {menuOptions}</li>
            
           </ul>
         </div>
-        <Link to='/' className="btn btn-ghost normal-case text-xl">PhoneSpaceBD</Link>
+        <Link to='/' className="btn btn-info normal-case text-xl">PhoneSpaceBD</Link>
       </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal p-0">
+      <div className="navbar-center hidden lg:flex ">
+        <ul className="menu menu-horizontal p-0 shadow-lg bg-base-100 font-medium text-xl">
         {menuOptions}
         </ul>
       </div>
@@ -79,7 +79,7 @@ const TopNavbar = () => {
               className="tooltip tooltip-bottom "
               data-tip={user?.displayName}
             >
-              <button className="btn ">
+              <div className="p-5">
                
                 {user?.photoURL ? (
                   <img
@@ -91,10 +91,10 @@ const TopNavbar = () => {
                 ) : (
                   <FaUser></FaUser>
                 )}
-              </button>
+              </div>
             </div>
 
-      {/* <label htmlFor="dashboard-drawer" className="btn btn-ghost lg:hidden"><FcGoogle></FcGoogle></label> */}
+      
       <label htmlFor="dashboard-drawer"  tabIndex={2} className="btn btn-ghost lg:hidden">
             <FaDatabase className="text-2xl"></FaDatabase>
           </label>

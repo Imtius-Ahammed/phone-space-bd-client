@@ -70,12 +70,11 @@ if(token){
         <div className="divider">OR</div>
         <h2 className="text-2xl font-bold text-center">Login</h2>
       <form onSubmit={handleSubmit(handleLogin)}>
-        <div className="form-control w-full max-w-xs">
-          <label className="label">
-            <span className="label-text"> your email?</span>
-          </label>
+        <div className="form-control w-full max-w-xs mb-5">
+         
           <input
             type="email"
+            placeholder="Enter Your Email"
             {...register("email",  {
               required: "Email Address is required"
             })}
@@ -84,10 +83,8 @@ if(token){
           />
           {errors.email && <p className="text-red-500" role="alert">{errors.email?.message}</p>}
         </div>
-        <div className="form-control w-full max-w-xs">
-          <label className="label">
-            <span className="label-text"> your Password?</span>
-          </label>
+        <div className="form-control w-full max-w-xs mb-5">
+         
           <input
             type="password"
             {...register("password", {

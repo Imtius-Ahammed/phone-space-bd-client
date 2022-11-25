@@ -41,7 +41,7 @@ const Register = () => {
   const handleRegister = (data)=>{
     console.log(data);
     setSignUpError('');
-    createNewUser(data.email, data.password)
+    createNewUser(data.email, data.password ,data.role)
     .then(result =>{
       const user = result.user;
       console.log(user);
@@ -51,7 +51,7 @@ const Register = () => {
       }
       updateUser(userInfo)
       .then(()=>{
-        saveBuyer(data.name, data.email);
+        saveBuyer(data.name, data.email,data.role);
       })
       .catch(err=>console.log(err));
 
@@ -64,8 +64,8 @@ const Register = () => {
 
   }
 
-  const saveBuyer = (name, email) => {
-    const buyer = { name, email };
+  const saveBuyer = (name, email,role) => {
+    const buyer = { name, email,role };
     fetch("http://localhost:5000/buyers", {
       method: "POST",
       headers: {
@@ -92,25 +92,41 @@ const Register = () => {
         <div><h1 className='flex gap-2 justify-center items-center text-2xl font-semibold '>Sign In With  <FcGoogle onClick={handleGoogleLogin} className='cursor-pointer text-3xl '></FcGoogle></h1></div>
         <div className="divider">OR</div>
         <h2 className='text-2xl font-bold text-center'>Login</h2>
-      <form onSubmit={handleSubmit(handleRegister)}>
-        <div className="form-control w-full max-w-xs">
-          <label className="label">
-            <span className="label-text"> your Name?</span>
-          </label>
+      <form  onSubmit={handleSubmit(handleRegister)}>
+      <div className="form-control">
+
+
+  <div className="form-control w-full max-w-xs mb-5">
+
+    <select type='text' name='role' {...register("role",  {
+              required: "Choose one"
+            })} className="select select-bordered">
+      
+      
+      <option>buyer</option>
+      <option>seller</option>
+    </select>
+    
+  </div>
+
+
+</div>
+        <div className="form-control w-full max-w-xs mb-3">
+          
           <input
             type="text"
             {...register("name")}
+            placeholder="Your Name"
             
             className="input input-bordered w-full max-w-xs"
           />
          
         </div>
-        <div className="form-control w-full max-w-xs">
-          <label className="label">
-            <span className="label-text"> your email?</span>
-          </label>
+        <div className="form-control w-full max-w-xs mb-3">
+          
           <input
             type="email"
+            placeholder="Your Email"
             {...register("email",  {
               required: "Email Address is required"
             })}
@@ -119,12 +135,11 @@ const Register = () => {
           />
           {errors.email && <p className="text-red-500" role="alert">{errors.email?.message}</p>}
         </div>
-        <div className="form-control w-full max-w-xs mb-2">
-          <label className="label">
-            <span className="label-text"> your Password?</span>
-          </label>
+        <div className="form-control w-full max-w-xs mb-3">
+          
           <input
             type="password"
+            placeholder='Your Password'
             {...register("password", {
               required: "Password is required",
               minLength:{value: 6, message:'password must be 6 digit or longer'},
