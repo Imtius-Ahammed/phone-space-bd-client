@@ -6,16 +6,21 @@ import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
+import useToken from "../../hooks/useToken";
 
 const Login = () => {
   const { register,formState:{errors}, handleSubmit } = useForm();
   const{signIn,providerLogin} = useContext(AuthContext);
   const [loginError,setLoginError] = useState('');
+  const[loginBuyerEmail, setLoginBuyerEmail] = useState('');
+  const [token] = useToken(loginBuyerEmail);
   const location = useLocation();
   const navigate = useNavigate();
 
   const from = location.state?.from?.pathname || '/';
-
+if(token){
+  navigate(from, {replace: true});
+}
  
   const googleProvider = new GoogleAuthProvider();
  
@@ -38,7 +43,8 @@ const Login = () => {
       const user = result.user;
       console.log(user);
       toast.success('User Login Successfull');
-      navigate(from, {replace: true});
+      setLoginBuyerEmail(data.email);
+      
 
     })
     .catch(err=>{

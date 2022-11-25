@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { FcGoogle } from "react-icons/fc";
 import {  GoogleAuthProvider } from 'firebase/auth';
+import useToken from '../../hooks/useToken';
 
 const Register = () => {
   const { register,formState:{errors}, handleSubmit } = useForm();
@@ -16,7 +17,15 @@ const Register = () => {
   const from = location.state?.from?.pathname || "/";
 
   const [signUpError, setSignUpError] = useState('');
+  const [buyerEmail, setBuyerEmail] = useState("");
   const googleProvider = new GoogleAuthProvider();
+  const [token] = useToken(buyerEmail);
+
+
+  if (token) {
+    navigate("/");
+  }
+
  
 
   const handleGoogleLogin = () => {
@@ -41,7 +50,9 @@ const Register = () => {
         displayName: data.name
       }
       updateUser(userInfo)
-      .then(()=>{})
+      .then(()=>{
+        saveBuyer(data.name, data.email);
+      })
       .catch(err=>console.log(err));
 
     })
@@ -52,6 +63,22 @@ const Register = () => {
     });
 
   }
+
+  const saveBuyer = (name, email) => {
+    const buyer = { name, email };
+    fetch("http://localhost:5000/buyers", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(buyer),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setBuyerEmail(email);
+        
+      });
+  };
   return (
     <div className="lg:h-[700px]  lg:flex-row  flex flex-col justify-center items-center">
        <div
