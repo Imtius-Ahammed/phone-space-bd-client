@@ -29,7 +29,10 @@ const DashboardLayout = () => {
       }
      {
       isAdmin && <>
+       <li><Link to='/dashboard/allsellers'>All Sellers</Link></li>
        <li><Link to='/dashboard/allbuyers'>All Buyers</Link></li>
+       <li><Link to='/dashboard/reporteditems'>Reported Items</Link></li>
+       
       
       
       </>
@@ -37,7 +40,10 @@ const DashboardLayout = () => {
      }
      {
       isSeller && !isAdmin && !isBuyer&& <>
-       <li><Link to='/dashboard/allsellers'>All Sellers</Link></li>
+       <li><Link to='/dashboard'>All Orders</Link></li>
+      
+       <li><Link to='/dashboard/myproducts'>My Products</Link></li>
+       <li><Link to='/dashboard/addproduct'>Add A Product</Link></li>
       
       </>
      }

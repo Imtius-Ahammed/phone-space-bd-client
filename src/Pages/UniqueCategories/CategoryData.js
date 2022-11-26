@@ -21,7 +21,7 @@ const CategoryData = ({phonedata, setPhones}) => {
         <div className="badge badge-secondary">NEW</div>
       </h2>
       <h1 className='text-xl'> Seller: <strong>{seller}</strong></h1>
-      <p>Product Id: <strong>{_id}</strong></p>
+      <p>ProductId: <strong>{_id}</strong></p>
       <p>Original Price:<span className='font-medium text-red-400'> {original_price}</span></p>
       <p>Resale Price: <span className='font-medium text-red-400'>{resale_price}</span></p>
       <p>Used For:  <span className='font-medium'>{used_time}</span></p>

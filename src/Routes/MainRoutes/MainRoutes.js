@@ -2,9 +2,12 @@ import { createBrowserRouter } from "react-router-dom"
 import DashboardLayout from "../../Layouts/DashboardLayout";
 import Main from "../../Layouts/Main"
 import Blogs from "../../Pages/Blogs/Blogs";
+import AddAproduct from "../../Pages/Dashboard/AddAproduct/AddAproduct";
 import AllBuyers from "../../Pages/Dashboard/AllBuyers/AllBuyers";
 import AllSellers from "../../Pages/Dashboard/AllSellers/AllSellers";
 import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
+import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
+import ReportedItems from "../../Pages/Dashboard/ReportedItems/ReportedItems";
 import Home from "../../Pages/Home/Home/Home"
 import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Login/Register";
@@ -61,7 +64,19 @@ export const router = createBrowserRouter([
       },
       {
         path:'/dashboard/allsellers',
-        element:<AllSellers></AllSellers>
+        element:<ProtectedAdminRoutes><AllSellers></AllSellers></ProtectedAdminRoutes>
+      },
+      {
+        path:'/dashboard/myproducts',
+        element:<MyProducts></MyProducts>
+      },
+      {
+        path:'/dashboard/addproduct',
+        element:<AddAproduct></AddAproduct>
+      },
+      {
+        path:'/dashboard/reporteditems',
+        element:<ProtectedAdminRoutes><ReportedItems></ReportedItems></ProtectedAdminRoutes>
       }
     ]
   }
