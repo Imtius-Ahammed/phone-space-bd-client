@@ -69,6 +69,7 @@ export const router = createBrowserRouter([
       {
         path:'/dashboard/myproducts',
         element:<MyProducts></MyProducts>
+        
       },
       {
         path:'/dashboard/addproduct',

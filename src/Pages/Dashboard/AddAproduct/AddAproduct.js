@@ -1,29 +1,65 @@
-import React from 'react';
-import toast, { Toaster } from 'react-hot-toast';
-const notify = () => toast.success(" Successfully Added Services");
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
+import { useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../contexts/AuthProvider";
+
+
+
+
+
 
 const AddAproduct = () => {
-  const handleAddProduct= (event) => {
+  const {user} = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
+
+ 
+
+
+  const handleAddProduct = (event) => {
     event.preventDefault();
     const form = event.target;
-    const service_id = form.service_id.value;
-    const title = form.title.value;
+    const seller_role=form.seller_role.value;
+    const used_time=form.used_time.value;
+   
+    const original_price=form.original_price.value;
+    const resale_price=form.resale_price.value;
+    const name = form.name.value;
+    
+    const condition = form.condition.value;
+    const phone = form.phone.value;
+    const location = form.location.value;
+    const category_id = form.category_id.value;
+    const year = form.year.value;
     const img = form.img.value;
-    const price = form.price.value;
     const description = form.description.value;
+   
+
+   
 
     const newProduct = {
-      service_id,
-      title,
+      seller_role,
+      used_time,
+      
+      original_price,
+      resale_price,
+      name,
+     
+      condition,
+      phone,
+      location,
+      category_id,
+      year,
       img,
-      price,
+      
       description,
     };
     fetch("http://localhost:5000/addproduct", {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        authorization: `bearer ${localStorage.getItem('accessToken')}`,
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
       },
       body: JSON.stringify(newProduct),
     })
@@ -31,14 +67,16 @@ const AddAproduct = () => {
       .then((data) => {
         console.log(data);
         if (data.acknowledged) {
-          alert("Successfully added Product");
+          toast.success('Succesfully Added Product')
           form.reset();
+          navigate('/dashboard/myproducts');
+
         }
       })
       .catch((er) => console.error(er));
   };
   return (
-     <form onSubmit={handleAddProduct}  className="hero">
+    <form onSubmit={handleAddProduct} className="hero">
       <div className="hero-content flex-col">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Add A product now!</h1>
@@ -46,46 +84,152 @@ const AddAproduct = () => {
         <div className="card flex-shrink-0 w-full max-w-3xl shadow-2xl bg-base-100">
           <div className="card-body lg:w-[700px]">
             <div className="form-control">
-              <label className="label">
-                <span className="label-text">service_id</span>
-              </label>
+             
               <input
-                name="service_id"
+                name="seller_name"
+                disabled
                 type="text"
-                placeholder="service_id"
+                defaultValue={user?.displayName}
+               
+                placeholder="Seller Name"
                 className="input input-bordered"
               />
             </div>
             <div className="form-control">
-              <label className="label">
-                <span className="label-text">Title</span>
-              </label>
+             
               <input
-                name="title"
+                name="seller_role"
+                disabled
                 type="text"
-                placeholder="title"
+                defaultValue={'sellerProduct'}
+               
+                placeholder="Seller Name"
+                className="input input-bordered"
+              />
+            </div>
+           
+            <div className="form-control">
+             
+              <input
+                name="name"
+                type="text"
+                placeholder="Product Name"
                 className="input input-bordered"
               />
             </div>
             <div className="form-control">
-              <label className="label">
-                <span className="label-text">Image</span>
-              </label>
+             
               <input
                 name="img"
                 type="text"
-                placeholder="img"
+                placeholder="Product image"
+                className="input input-bordered"
+              />
+            </div>
+
+            
+           
+            
+            <div className="form-control w-full  mb-5">
+              <select
+                type="text"
+                name="condition"
+                required
+                
+                className="select select-bordered"
+              >
+                 <option disabled selected>Select Condition</option>
+                <option>excellent</option>
+                <option>good</option>
+                <option>fair</option>
+              </select>
+            </div>
+
+            <div className="form-control">
+             
+              <input
+                name="phone"
+                type="text"
+                required
+                placeholder="phone"
+                className="input input-bordered"
+              />
+            </div>
+
+            <div className="form-control w-full ">
+              <select
+                type="text"
+                name="location"
+                placeholder="Location Division"
+                required
+                
+                className="select select-bordered"
+              >
+                <option disabled selected>Select Location</option>
+                <option>Dhaka</option>
+                <option>Comilla</option>
+                <option>Sylhet</option>
+                <option>Rajshahi</option>
+                <option>Chittagong</option>
+                <option>Maymensingh</option>
+                <option>Barisal</option>
+                <option>Khulna</option>
+                <option>Rangpur</option>
+              </select>
+            </div>
+            <div className="form-control w-full  ">
+              <select
+                type="text"
+                name="category_id"
+                placeholder="Product Category"
+                required
+                
+                className="select select-bordered"
+              >
+                 <option disabled selected>Category</option>
+                <option>01</option>
+                <option>02</option>
+                <option>03</option>
+               
+              </select>
+            </div>
+            <div className="form-control">
+              <label className="font-semibold">
+                Purchase Date
+              </label>
+             
+              <input
+                name="year"
+                type="date"
+                placeholder="Purchase Date"
                 className="input input-bordered"
               />
             </div>
             <div className="form-control">
-              <label className="label">
-                <span className="label-text">Price</span>
-              </label>
+             
+             
               <input
-                name="price"
+                name="used_time"
                 type="text"
-                placeholder="price"
+                placeholder="Used duration"
+                className="input input-bordered"
+              />
+            </div>
+            <div className="form-control">
+             
+              <input
+                name="original_price"
+                type="text"
+                placeholder="Original price"
+                className="input input-bordered"
+              />
+            </div>
+            <div className="form-control">
+             
+              <input
+                name="resale_price"
+                type="text"
+                placeholder="Resale price"
                 className="input input-bordered"
               />
             </div>
@@ -103,17 +247,16 @@ const AddAproduct = () => {
               ></textarea>
             </div>
             <div className="form-control mt-6">
-              <button onClick={notify} className="btn btn-primary">
+              <button className="btn btn-primary">
                 Submit
               </button>
             </div>
-            <Toaster />
+           
           </div>
         </div>
       </div>
     </form>
   );
- 
 };
 
 export default AddAproduct;
