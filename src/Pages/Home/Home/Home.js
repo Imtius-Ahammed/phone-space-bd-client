@@ -8,7 +8,7 @@ import PhoneCategories from '../PhoneCategories/PhoneCategories';
 const Home = () => {
   return (
     <div>
-      <h1>This is Home</h1>
+      
       <Carousal></Carousal>
       <AboutSection></AboutSection>
       <PhoneCategories></PhoneCategories>

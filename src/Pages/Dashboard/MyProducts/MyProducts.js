@@ -63,13 +63,21 @@ const MyProducts = () => {
     <div className='grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-5 m-3'>
       {
         dataSets.map(data=><div key={data._id}  className="card  bg-base-100 shadow-xl">
-        <figure><img src={data.img} alt="Shoes" /></figure>
+         <figure>
+      <img className='lg:h-[350px] w-full' src={data.img} alt="phoduct" />
+    </figure>
         <div className="card-body">
           <h2 className="card-title">{data.name}</h2>
-          <p>{data.location}</p>
-          <p>{data.location}</p>
-          <p>{data.location}</p>
-          <p>{data.location}</p>
+          <h1 className='text-xl'> Seller: <strong>{data.seller}</strong></h1>
+      <h1 className='text-xl'> Product: <strong>{data.name}</strong></h1>
+      <p>Original Price:<span className='font-medium text-red-400'>${data.original_price}</span></p>
+      <p>Resale Price: <span className='font-medium text-red-400'>${data.resale_price}</span></p>
+      <p>Condition:  <span className='font-medium'>{data.condition}</span></p>
+      <p>Phone:  <span className='font-medium'>{data.phone}</span></p>
+      <p>Location:  <span className='font-medium'>{data.location}</span></p>
+      <p>Year Of Purchase:  <span className='font-medium'>{data.year}</span></p>
+      <p>Used Duration:  <span className='font-medium'>{data.used_time}</span></p>
+      <p>Description:  <span >{data.description}</span></p>
           <div className="card-actions justify-end">
           <label
                       onClick={() => setDeletingProduct(data)}

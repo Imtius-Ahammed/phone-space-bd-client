@@ -20,6 +20,7 @@ const AddAproduct = () => {
   const handleAddProduct = (event) => {
     event.preventDefault();
     const form = event.target;
+    const seller=form.seller.value;
     const seller_role=form.seller_role.value;
     const used_time=form.used_time.value;
    
@@ -39,6 +40,7 @@ const AddAproduct = () => {
    
 
     const newProduct = {
+      seller,
       seller_role,
       used_time,
       
@@ -86,7 +88,7 @@ const AddAproduct = () => {
             <div className="form-control">
              
               <input
-                name="seller_name"
+                name="seller"
                 disabled
                 type="text"
                 defaultValue={user?.displayName}
@@ -103,7 +105,7 @@ const AddAproduct = () => {
                 type="text"
                 defaultValue={'sellerProduct'}
                
-                placeholder="Seller Name"
+                placeholder="Seller Role"
                 className="input input-bordered"
               />
             </div>
@@ -187,9 +189,9 @@ const AddAproduct = () => {
                 className="select select-bordered"
               >
                  <option disabled selected>Category</option>
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
+                <option>featurePhones</option>
+                <option>smartPhones</option>
+                <option>tablets</option>
                
               </select>
             </div>

@@ -8,6 +8,8 @@ const AllSellers = () => {
 
   const [deleteUser,setDeletingUser] = useState(null);
 
+
+
   const cancelModal = ()=>{
     setDeletingUser(null);
   }
@@ -30,6 +32,22 @@ const AllSellers = () => {
      }
     }
   });
+
+  
+  const handleVerify= id =>{
+    fetch(`http://localhost:5000/buyers/admin/${id}`,{
+      method:'PUT',
+      headers:{
+        authorization: `bearer ${localStorage.getItem('accessToken')}`
+      }
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      refetch();
+    })
+
+  }
 
   const handleDeleteUser = buyer=>{
     console.log(buyer)
@@ -88,6 +106,12 @@ const AllSellers = () => {
                 </th>
                 <th scope="col" className="py-3 px-6">
                     <div className="flex items-center">
+                        Verify
+                      
+                    </div>
+                </th>
+                <th scope="col" className="py-3 px-6">
+                    <div className="flex items-center">
                       Delete
                       
                     </div>
@@ -110,6 +134,9 @@ const AllSellers = () => {
       </td>
       <td className="py-4 px-6">
           {buyer.role}
+      </td>
+      <td className="py-4 px-6">
+          {buyer?.sellerStatus !=='verified' ? <button onClick={()=>handleVerify(buyer._id)} className='btn btn-primary btn-xs'>Verify</button>: <>{buyer?.sellerStatus}</> }
       </td>
       <td className="py-4 px-6 ">
       <label

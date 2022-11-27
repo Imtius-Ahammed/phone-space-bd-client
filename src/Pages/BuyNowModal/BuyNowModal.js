@@ -4,7 +4,7 @@ import { AuthContext } from '../../contexts/AuthProvider';
 
 const BuyNowModal = ({phones,setPhones}) => {
   const { user } = useContext(AuthContext);
-  const {title,resale_price} = phones;
+  const {name,resale_price} = phones;
   const handleBuy = (event) => {
 
     event.preventDefault();
@@ -89,7 +89,7 @@ const BuyNowModal = ({phones,setPhones}) => {
               name="title"
               type="text"
               disabled
-              value={title}
+              value={name}
               placeholder="Product Name"
               className="input w-full "
             />
