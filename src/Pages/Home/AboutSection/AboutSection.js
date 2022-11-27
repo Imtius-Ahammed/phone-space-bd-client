@@ -22,7 +22,7 @@ const AboutSection = () => {
               our friendly customer service team will be more than happy to
               place a back order with our purchasing team.
             </p>
-            <button className="btn btn-primary">Get Started</button>
+            
           </div>
         </div>
       </div>

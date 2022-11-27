@@ -7,7 +7,7 @@ import PhoneCategories from '../PhoneCategories/PhoneCategories';
 
 const Home = () => {
   return (
-    <div>
+    <div className='bg-sky-100'>
       
       <Carousal></Carousal>
       <AboutSection></AboutSection>
