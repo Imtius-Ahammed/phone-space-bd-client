@@ -21,33 +21,76 @@ const MyOrders = () => {
     },
   });
   return (
-    <div>
-    <h3 className="text-3xl mb-5">My Orders</h3>
-    <div className="overflow-x-auto">
-      <table className="table w-full">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Name</th>
-            <th>Product Name</th>
-            <th>Email</th>
-            <th>Order Time</th>
-            <th>Price</th>
-            <th>Payment</th>
-          </tr>
+    <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
+    <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" className="py-3 px-6">
+                   
+                </th>
+                <th scope="col" className="py-3 px-6">
+                    <div className="flex items-center">
+                   Name
+                       
+                    </div>
+                </th>
+                <th scope="col" className="py-3 px-6">
+                    <div className="flex items-center">
+                    Product Name
+                       
+                    </div>
+                </th>
+                <th scope="col" className="py-3 px-6">
+                    <div className="flex items-center">
+                    Email
+                      
+                    </div>
+                </th>
+                <th scope="col" className="py-3 px-6">
+                    <div className="flex items-center">
+                    Order Time
+                      
+                    </div>
+                </th>
+                <th scope="col" className="py-3 px-6">
+                    <div className="flex items-center">
+                    Price
+                      
+                    </div>
+                </th>
+                <th scope="col" className="py-3 px-6">
+                    <div className="flex items-center">
+                    Payment
+                      
+                    </div>
+                </th>
+               
+            </tr>
         </thead>
         <tbody>
-          {orders &&
-            orders.map((order, i) => (
-              <tr key={order._id}>
-                <th>{i + 1}</th>
-                <td>{order.name}</td>
-                <td>{order.title}</td>
-                <td>{order.email}</td>
-                <td>{order.datetime}</td>
-                <td>{order.price}</td>
-                <td>
-                  {order.price && !order.paid && (
+
+        {
+      orders.map((order,i)=>    <tr key={order._id} className="bg-black dark:bg-sky-100 dark:border-sky-300 text-black font-semibold">
+      <th scope="row" className="py-4 px-6 font-medium text-black whitespace-nowrap">
+          {i+1}
+      </th>
+      <td className="py-4 px-6">
+         {order.name}
+      </td>
+      <td className="py-4 px-6">
+         {order.title}
+      </td>
+      <td className="py-4 px-6">
+          {order.email}
+      </td>
+      <td className="py-4 px-6">
+          {order.datatime}
+      </td>
+      <td className="py-4 px-6">
+          {order.price}
+      </td>
+      <td className="py-4 px-6">
+      {order.price && !order.paid && (
                     <Link to={`/dashboard/payment/${order._id}`}>
                      
                       <button className="btn btn-primary btn-sm">Pay</button>
@@ -56,13 +99,21 @@ const MyOrders = () => {
                   {order.price && order.paid && (
                     <span className="text-primary">Paid</span>
                   )}
-                </td>
-              </tr>
-            ))}
+      </td>
+    
+  </tr>
+      )
+     }
+           
+          
+         
         </tbody>
-      </table>
-    </div>
-  </div>
+     
+     
+    </table>
+</div>
+
+
   );
 };
 
