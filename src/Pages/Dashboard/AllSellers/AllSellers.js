@@ -75,7 +75,7 @@ const AllSellers = () => {
   
   return (
     <div>
-      <h2>This is Sellers</h2>
+      <div className='text-3xl bg-sky-200 font-bold text-center py-3'><h2>Sellers Informations</h2></div>
 
 
       

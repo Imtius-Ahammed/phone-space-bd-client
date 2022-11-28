@@ -18,9 +18,10 @@ fetch('http://localhost:5000/addproduct/seller/advertised')
   return (
   <div>
     {
-      advertise?.length === 0 ? <></>:<>  <section className='mt-16'>
-         <h2 className='text-3xl font-bold text-center mb-8'>This is Advertise Sections</h2>
-      <div className='grid lg:grid-cols-3 grid-cols-1 gap-5 m-3'>
+      advertise?.length === 0 ? <></> : <>  <section className='mt-16'>
+        <img className='w-full ' src="https://webbullindia.com/icon/Webbull_Banner-dm.jpg" alt="" />
+         <div className='bg-base-300 py-6'><h2 className='lg:text-5xl text-3xl  font-bold text-center '>Advertised Products</h2></div>
+      <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 m-3'>
        
         {
           advertise.map(ads =><div key={ads._id}  className="card bg-base-100  shadow-xl mb-16">

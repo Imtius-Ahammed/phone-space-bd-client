@@ -54,7 +54,8 @@ const AllBuyers = () => {
   }
   return (
     <div>
-      <h2>Thi si buyers</h2>
+        <div className='text-3xl bg-sky-200 font-bold text-center py-3'><h2>Buyers Informations</h2></div>
+
 
           
 <div className="overflow-x-auto relative shadow-md sm:rounded-lg">

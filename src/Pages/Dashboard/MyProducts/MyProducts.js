@@ -29,6 +29,7 @@ const MyProducts = () => {
     .then(data => {
       console.log(data);
       refetch();
+      toast.success('Product advertised successfully')
     })
 
   }
@@ -108,7 +109,7 @@ const MyProducts = () => {
                     >
                       Delete
                     </label>
-                    {data?.advertiseStatus !=='advertised' ? <button onClick={()=>handleAdvertisement(data._id)} className='btn btn-primary btn-xs'>Unsold</button>: <>{data?.advertiseStatus}</> }
+                    {data?.advertiseStatus !=='advertised' ? <button onClick={()=>handleAdvertisement(data._id)} className='btn btn-primary btn-xs'>Unsold</button>: <><button className='btn btn-sm btn-success'>{data?.advertiseStatus}</button></> }
           </div>
         </div>
       </div>)

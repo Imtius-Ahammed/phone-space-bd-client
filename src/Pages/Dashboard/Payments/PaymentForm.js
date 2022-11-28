@@ -1,5 +1,6 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 const PaymentForm = ({ orders }) => {
     const [cardError, setCardError] = useState('');
@@ -88,9 +89,10 @@ const PaymentForm = ({ orders }) => {
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);
-                    if (data.insertedId) {
+                    if (data.acknowledged) {
                         setSuccess('Payment Complete Successfully');
                         setTransactionId(paymentIntent.id);
+                        toast.success('Succesfully paid')
                     }
                 })
         }
@@ -133,7 +135,7 @@ const PaymentForm = ({ orders }) => {
             <p className="text-red-500">{cardError}</p>
             {
                 success && <div>
-                    <p className='text-green-500'>{success}</p>
+                    <p className='text-green-600 mt-5 font-bold text-2xl'>{success}</p>
                     <p>Your transactionId: <span className='font-bold'>{transactionId}</span></p>
                 </div>
             }
