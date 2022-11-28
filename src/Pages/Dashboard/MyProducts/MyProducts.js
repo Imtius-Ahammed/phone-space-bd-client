@@ -85,13 +85,13 @@ const MyProducts = () => {
             <img className="lg:h-[350px] w-full" src={data.img} alt="phoduct" />
           </figure>
           <div className="card-body">
-            <h2 className="card-title">{data.name}</h2>
+           
             <h1 className="text-xl">
-              {" "}
+             
               Seller: <strong>{data.seller}</strong>
             </h1>
             <h1 className="text-xl">
-              {" "}
+             
               Product: <strong>{data.name}</strong>
             </h1>
             <p>
@@ -101,7 +101,7 @@ const MyProducts = () => {
               </span>
             </p>
             <p>
-              Resale Price:{" "}
+              Resale Price:
               <span className="font-medium text-red-400">
                 ${data.resale_price}
               </span>
