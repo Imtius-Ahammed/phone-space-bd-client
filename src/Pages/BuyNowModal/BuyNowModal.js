@@ -1,12 +1,11 @@
-import React, { useContext } from 'react';
-import toast from 'react-hot-toast';
-import { AuthContext } from '../../contexts/AuthProvider';
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
+import { AuthContext } from "../../contexts/AuthProvider";
 
-const BuyNowModal = ({phones,setPhones}) => {
+const BuyNowModal = ({ phones, setPhones }) => {
   const { user } = useContext(AuthContext);
-  const {name,resale_price} = phones;
+  const { name, resale_price } = phones;
   const handleBuy = (event) => {
-
     event.preventDefault();
     const form = event.target;
     const title = form.title.value;
@@ -15,22 +14,19 @@ const BuyNowModal = ({phones,setPhones}) => {
     const email = form.email.value;
     const phone = form.phone.value;
     const datetime = form.datetime.value;
-  
+
     const orderBooking = {
-     
-     
       title,
       name,
-      
+
       email,
       phone,
       price,
-      datetime
-      
+      datetime,
     };
-    console.log(orderBooking)
-    
-    fetch("http://localhost:5000/orders", {
+    console.log(orderBooking);
+
+    fetch("https://phone-space-bd-server.vercel.app/orders", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -41,7 +37,7 @@ const BuyNowModal = ({phones,setPhones}) => {
       .then((data) => {
         console.log(data);
         if (data.acknowledged) {
-          setPhones(null)
+          setPhones(null);
           toast.success("Order Confirmed");
           // refetch();
         } else {
@@ -49,7 +45,7 @@ const BuyNowModal = ({phones,setPhones}) => {
         }
       });
   };
-  
+
   return (
     <>
       <input type="checkbox" id="buy-modal" className="modal-toggle" />
@@ -62,13 +58,7 @@ const BuyNowModal = ({phones,setPhones}) => {
             ✕
           </label>
           <h3 className="text-lg font-bold">{}</h3>
-          <form
-            onSubmit={handleBuy}
-            className="grid grid-cols-1 gap-3 mt-10"
-          >
-         
-           
-          
+          <form onSubmit={handleBuy} className="grid grid-cols-1 gap-3 mt-10">
             <input
               name="name"
               type="text"
@@ -85,7 +75,7 @@ const BuyNowModal = ({phones,setPhones}) => {
               placeholder="Email Address"
               className="input w-full "
             />
-              <input
+            <input
               name="title"
               type="text"
               disabled
@@ -97,7 +87,6 @@ const BuyNowModal = ({phones,setPhones}) => {
               name="price"
               type="text"
               disabled
-              
               value={resale_price}
               placeholder="Price"
               className="input w-full "
@@ -116,20 +105,23 @@ const BuyNowModal = ({phones,setPhones}) => {
               placeholder="Meeting Address"
               className="input w-full "
             />
-             <input required className="input w-full " name='datetime' type="datetime-local"/>
+            <input
+              required
+              className="input w-full "
+              name="datetime"
+              type="datetime-local"
+            />
 
             <input
               className="btn btn-accent w-full "
               type="submit"
               value="Submit"
             />
-           
           </form>
         </div>
       </div>
     </>
   );
 };
-
 
 export default BuyNowModal;

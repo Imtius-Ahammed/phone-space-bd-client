@@ -6,9 +6,11 @@ import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
+import Title from "../../hooks/Title";
 import useToken from "../../hooks/useToken";
 
 const Login = () => {
+  Title('Login')
   const { register,formState:{errors}, handleSubmit } = useForm();
   const{signIn,providerLogin} = useContext(AuthContext);
   const [loginError,setLoginError] = useState('');

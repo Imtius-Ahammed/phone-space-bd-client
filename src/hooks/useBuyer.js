@@ -5,9 +5,7 @@ const useBuyer = (email) => {
   const [isBuyerBuffering, setIsBuyerBuffering] = useState(true);
   useEffect(() => {
     if (email) {
-      fetch(
-        `http://localhost:5000/buyers/buyer/${email}`
-      )
+      fetch(`https://phone-space-bd-server.vercel.app/buyers/buyer/${email}`)
         .then((res) => res.json())
         .then((data) => {
           console.log(data);

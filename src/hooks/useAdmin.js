@@ -5,9 +5,7 @@ const useAdmin = (email) => {
   const [isAdminBuffering, setIsAdminBuffering] = useState(true);
   useEffect(() => {
     if (email) {
-      fetch(
-        `http://localhost:5000/buyers/admin/${email}`
-      )
+      fetch(`https://phone-space-bd-server.vercel.app/buyers/admin/${email}`)
         .then((res) => res.json())
         .then((data) => {
           console.log(data);

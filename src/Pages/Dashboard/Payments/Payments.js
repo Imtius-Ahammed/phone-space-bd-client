@@ -6,10 +6,12 @@ import PaymentForm from "./PaymentForm";
 
 
 import Buffering from '../../Shared/Buffering/Buffering';
+import Title from '../../../hooks/Title';
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK);
 
 const Payment = () => {
+    Title('Payments Form')
    
     const orders = useLoaderData();
     const navigation = useNavigation();

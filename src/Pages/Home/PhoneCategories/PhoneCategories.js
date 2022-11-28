@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Title from '../../../hooks/Title';
 
 
 
 const PhoneCategories = () => {
+  Title('Phone Category')
   const [categories,setCategories]  =useState([])
  
 
@@ -11,7 +13,7 @@ const PhoneCategories = () => {
  
 
   useEffect(()=>{
-fetch('http://localhost:5000/phoneCategories')
+fetch('https://phone-space-bd-server.vercel.app/phoneCategories')
 .then(res=> res.json())
 .then(data=>setCategories(data))
   },[])
