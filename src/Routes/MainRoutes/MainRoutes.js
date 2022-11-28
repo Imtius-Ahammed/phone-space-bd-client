@@ -42,12 +42,7 @@ export const router = createBrowserRouter([
         element:<Register></Register>
 
       },
-      {
-        path:'/advertise',
-        element:<AdvertiseProducts></AdvertiseProducts>,
-        loader:()=>fetch('http://localhost:5000/addproduct/seller/advertised')
-
-      },
+     
       {
         path:'*',
         element:<div>
