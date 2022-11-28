@@ -43,8 +43,10 @@ const AllSellers = () => {
     })
     .then(res => res.json())
     .then(data => {
-      console.log(data);
-      refetch();
+      if(data.modifiedCount>0){
+        refetch();
+        toast.success(`user verfied successfully`)
+      }
     })
 
   }
