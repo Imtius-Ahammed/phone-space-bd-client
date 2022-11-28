@@ -64,11 +64,11 @@ if(token){
       </div>
       
       
-      <div className="w-96 p-7">
+      <div className="w-96 p-7 shadow-xl hover:shadow-sky-200 bg-base-50">
         
       <div><h1 className='flex gap-2 justify-center items-center text-2xl font-semibold '>Sign In With  <FcGoogle onClick={handleGoogleLogin} className='cursor-pointer text-3xl '></FcGoogle></h1></div>
         <div className="divider">OR</div>
-        <h2 className="text-2xl font-bold text-center">Login</h2>
+        <h2 className="text-2xl font-bold text-center mb-8">Login</h2>
       <form onSubmit={handleSubmit(handleLogin)}>
         <div className="form-control w-full max-w-xs mb-5">
          
@@ -95,12 +95,16 @@ if(token){
             className="input input-bordered w-full max-w-xs"
           />
           {errors.password && <p className="text-red-500" role="alert">{errors.password?.message}</p>}
+          <div><Link><small className="underline">Forgot password?</small></Link></div>
         </div>
        
+       
 
-        <p>New to Doctors Portal <Link className="text-red-400 font-semibold" to="/register">Create new Account</Link></p>
-        <input className="btn btn-accent w-full" value='login' type="submit" />
+       
+        <input className="btn btn-accent font-bold mb-5  text-black text-xl w-full" value='login' type="submit" />
         <div>{loginError && <p className="text-red-500">{loginError}</p>}</div>
+
+        <p>New to Doctors Portal?  <Link className="text-blue-600 underline cursor-pointer font-semibold " to="/register">Create new Account</Link></p>
       </form>
       </div>
     </div>

@@ -88,10 +88,10 @@ const Register = () => {
       </div>
       
       
-      <div className="w-96 p-8">
-        <div><h1 className='flex gap-2 justify-center items-center text-2xl font-semibold '>Sign In With  <FcGoogle onClick={handleGoogleLogin} className='cursor-pointer text-3xl '></FcGoogle></h1></div>
+      <div className="w-96 p-8 shadow-xl hover:shadow-sky-200 bg-base-50">
+        <div><h1 className='flex gap-2 justify-center items-center text-2xl font-semibold '>Sign Up with <FcGoogle onClick={handleGoogleLogin} className='cursor-pointer text-3xl '></FcGoogle></h1></div>
         <div className="divider">OR</div>
-        <h2 className='text-2xl font-bold text-center'>Login</h2>
+        <h2 className='text-2xl font-bold mb-8 text-center'>Registration Form</h2>
       <form  onSubmit={handleSubmit(handleRegister)}>
       <div className="form-control">
 
@@ -101,7 +101,7 @@ const Register = () => {
     <select type='text' name='role' {...register("role",  {
               required: "Choose one"
             })} className="select select-bordered">
-      
+       <option disabled selected>Select Role</option>
       
       <option>buyer</option>
       <option>seller</option>
@@ -155,8 +155,9 @@ const Register = () => {
         </div>
        
 
-        <p className='mb-2'><small>New to PhoneSpaceBD?</small> <Link className="text-red-400 font-semibold " to="/login">Please Login</Link></p>
-        <input className="btn btn-accent  w-full" value='sign up' type="submit" />
+       
+        <input className="btn btn-accent mb-4 font-bold text-black text-xl w-full" value='sign up' type="submit" />
+        <p className='mb-2'><small>Already have an account?</small> <Link className="text-red-400 font-semibold underline cursor-pointer" to="/login">Please Login</Link></p>
         <div>{signUpError && <p className="text-red-500">{signUpError}</p>}</div>
       </form>
       </div>

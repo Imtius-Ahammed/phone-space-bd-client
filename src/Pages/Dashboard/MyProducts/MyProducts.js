@@ -13,6 +13,28 @@ const MyProducts = () => {
   }
 
 
+  //add
+
+
+ 
+  
+  const handleAdvertisement= id =>{
+    fetch(`http://localhost:5000/addproduct/seller/${id}`,{
+      method:'PUT',
+      headers:{
+        authorization: `bearer ${localStorage.getItem('accessToken')}`
+      }
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      refetch();
+    })
+
+  }
+  //add
+
+
 
   const {data: dataSets=[],isLoading, refetch}= useQuery({
     queryKey: ['dataSets'],
@@ -86,7 +108,7 @@ const MyProducts = () => {
                     >
                       Delete
                     </label>
-            <button  className="btn btn-primary">Advertised Button</button>
+                    {data?.advertiseStatus !=='advertised' ? <button onClick={()=>handleAdvertisement(data._id)} className='btn btn-primary btn-xs'>Unsold</button>: <>{data?.advertiseStatus}</> }
           </div>
         </div>
       </div>)

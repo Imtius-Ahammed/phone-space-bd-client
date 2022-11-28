@@ -1,5 +1,6 @@
 import React from 'react';
 import AboutSection from '../AboutSection/AboutSection';
+import AdvertiseProducts from '../AdvertiseProducts/AdvertiseProducts';
 import Carousal from '../Carousal/Carousal';
 import DataPolicy from '../DataPolicy/DataPolicy';
 import PhoneCategories from '../PhoneCategories/PhoneCategories';
@@ -13,6 +14,7 @@ const Home = () => {
       <AboutSection></AboutSection>
       <PhoneCategories></PhoneCategories>
       <DataPolicy></DataPolicy>
+      <AdvertiseProducts></AdvertiseProducts>
 
     </div>
   );

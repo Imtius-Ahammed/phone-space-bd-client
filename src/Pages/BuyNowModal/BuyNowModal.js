@@ -54,7 +54,7 @@ const BuyNowModal = ({phones,setPhones}) => {
     <>
       <input type="checkbox" id="buy-modal" className="modal-toggle" />
       <div className="modal">
-        <div className="modal-box relative">
+        <div className="modal-box relative shadow-xl bg-sky-200 shadow-blue-400">
           <label
             htmlFor="buy-modal"
             className="btn btn-sm btn-circle absolute right-2 top-2"

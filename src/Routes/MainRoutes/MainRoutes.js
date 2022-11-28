@@ -10,6 +10,7 @@ import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
 import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
 import Payment from "../../Pages/Dashboard/Payments/Payments";
 import ReportedItems from "../../Pages/Dashboard/ReportedItems/ReportedItems";
+import AdvertiseProducts from "../../Pages/Home/AdvertiseProducts/AdvertiseProducts";
 import Home from "../../Pages/Home/Home/Home"
 import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Login/Register";
@@ -39,6 +40,12 @@ export const router = createBrowserRouter([
       {
         path:'/register',
         element:<Register></Register>
+
+      },
+      {
+        path:'/advertise',
+        element:<AdvertiseProducts></AdvertiseProducts>,
+        loader:()=>fetch('http://localhost:5000/addproduct/seller/advertised')
 
       },
       {

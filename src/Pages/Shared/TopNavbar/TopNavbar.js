@@ -43,8 +43,8 @@ const TopNavbar = () => {
   return (
     <div className="navbar bg-base-300 flex justify-between ">
       <div className="navbar-start">
-        <div className="dropdown">
-          <label tabIndex={0} className="btn btn-ghost lg:hidden">
+        <div className="dropdown ">
+          <label tabIndex={0} className="btn btn-info hover:btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -62,34 +62,34 @@ const TopNavbar = () => {
           </label>
           <ul
             tabIndex={1}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow-lg bg-base-100 rounded-box w-52"
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow-xl hover:shadow-black bg-sky-100 rounded-box  w-52"
           >
-           <li> {menuOptions}</li>
+            {menuOptions}
            
           </ul>
         </div>
-        <Link to='/' className="btn btn-info normal-case text-xl">PhoneSpaceBD</Link>
+        <Link to='/' className="flex items-center  hover:text-blue-500  hover:shadow-xl shadow-black hover:bg-sky-200 p-4"><img className="w-[35px] " src="https://cdn.iconscout.com/icon/premium/png-256-thumb/space-phone-1152946.png" alt="" /> <h1 className="font-bold text-2xl">PhoneSpaceBD</h1></Link>
       </div>
       <div className="navbar-center hidden lg:flex ">
-        <ul className="menu menu-horizontal p-0 shadow-lg bg-base-100 font-medium text-xl">
+        <ul className="menu menu-horizontal p-0 shadow-lg font-medium text-xl">
         {menuOptions}
         </ul>
       </div>
       <div
-              className="tooltip tooltip-bottom "
+              className="tooltip tooltip-bottom mb-3"
               data-tip={user?.displayName}
             >
-              <div className="p-5">
+              <div className="mx-3  ">
                
                 {user?.photoURL ? (
                   <img
                     style={{ height: "35px" }}
                     className="rounded-full"
                     src={user?.photoURL}
-                    alt=""
+                    alt="Profile"
                   />
                 ) : (
-                  <FaUser></FaUser>
+                  <FaUser className="text-2xl"></FaUser>
                 )}
               </div>
             </div>

@@ -78,12 +78,12 @@ const AddAproduct = () => {
       .catch((er) => console.error(er));
   };
   return (
-    <form onSubmit={handleAddProduct} className="hero">
-      <div className="hero-content flex-col">
+    <form onSubmit={handleAddProduct} className="hero bg-sky-100">
+      <div className="hero-content  hover:shadow-xl hover:shadow-blue-400 flex-col">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Add A product now!</h1>
         </div>
-        <div className="card flex-shrink-0 w-full max-w-3xl shadow-2xl bg-base-100">
+        <div className="card flex-shrink-0 w-full  shadow-2xl bg-sky-200">
           <div className="card-body lg:w-[700px]">
             <div className="form-control">
              
