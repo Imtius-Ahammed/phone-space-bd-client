@@ -58,7 +58,7 @@ if(token){
 
   }
   return (
-    <div className="h-[800px] lg:flex-row  flex flex-col justify-center items-center">
+    <div className="h-[800px] lg:flex-row  flex flex-col justify-center items-center mb-6">
        <div
         className="grow-0 shrink-1 md:shrink-0 basis-auto xl:w-6/12 lg:w-6/12 md:w-9/12 mb-12 md:mb-0"
       >
@@ -89,6 +89,7 @@ if(token){
          
           <input
             type="password"
+            placeholder="password"
             {...register("password", {
               required: "Password is required",
               minLength:{value: 6, message:'password must be 6 digit or longer'}
